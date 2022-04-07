@@ -9,20 +9,20 @@ if len != 3:
     print("Usage: ./100-my_calculator.py <a> <operator> <b>")
     sys.exit(1)
 
-    oprnd = sys.argv[2]
+oprnd = sys.argv[2]
 
-    if oprnd != "+" and oprnd != "-" and oprnd != "*" and oprnd != "/":
-        print("Unknown operator. Available operators: +, -, * and /")
-        sys.exit(1)
+if oprnd != "+" and oprnd != "-" and oprnd != "*" and oprnd != "/":
+    print("Unknown operator. Available operators: +, -, * and /")
+    sys.exit(1)
 
-    a = int(sys.argv[1])
-    b = int(sys.argv[3])
+a = int(sys.argv[1])
+b = int(sys.argv[3])
 
-    if oprnd == "+":
-        print("{:d} + {:d} = {:d}".format(a, b, add(a, b)))
-    elif oprnd == "-":
-        print("{:d} - {:d} = {:d}".format(a, b, sub(a, b)))
-    elif oprnd == "*":
-        print("{:d} * {:d} = {:d}".format(a, b, mul(a, b)))
-    elif oprnd == "/":
-        print("{:d} / {:d} = {:d}".format(a, b, div(a, b)))
+if oprnd == "+":
+    print("{:d} + {:d} = {:d}".format(a, b, add(a, b)))
+elif oprnd == "-":
+    print("{:d} - {:d} = {:d}".format(a, b, sub(a, b)))
+elif oprnd == "*":
+    print("{:d} * {:d} = {:d}".format(a, b, mul(a, b)))
+elif oprnd == "/":
+    print("{:d} / {:d} = {:d}".format(a, b, div(a, b)))
