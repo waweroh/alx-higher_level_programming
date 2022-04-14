@@ -1,17 +1,14 @@
 #!/usr/bin/node
+// Compute factorial with Javascript
 
-const args = process.argv;
+let argv = process.argv;
 
-if (args.length <= 3) {
-  console.log(0);
-} else {
-  let largest = 0;
-  let secondLargest = 0;
-  for (let i = 2; i <= args.length; i++) {
-    if (parseInt(args[i]) > largest) {
-      secondLargest = largest;
-      largest = parseInt(args[i]);
-    }
-  }
-  console.log(secondLargest);
+if (argv.length < 4) { console.log(0); } else {
+  // Strip extraneous args
+  argv = argv.slice(2);
+  // Convert elems to ints
+  let nums = argv.map(x => parseInt(x));
+  nums = nums.sort(function (a, b) { return a - b; });
+  // Find max int in list
+  console.log(nums[nums.length - 2]);
 }
