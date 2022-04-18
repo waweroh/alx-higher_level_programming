@@ -1,33 +1,27 @@
 #!/usr/bin/python3
-"""Script to select all states with a certain name"""
+""" Select states starting with N from database """
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
+
+    from sys import argv
     import MySQLdb
-    import sys
 
-    dbInfo = sys.argv[1:]
-    # db = MySQLdb.connect(host='localhost', user='root',\
-    #         passwd='clearance', db='hbtn_0e_0_usa')
-    db = MySQLdb.connect(
-            host='localhost',
-            port=3306,
-            user=dbInfo[0],
-            passwd=dbInfo[1],
-            db=dbInfo[2],
-            charset='utf8'
-            )
+    db_user = argv[1]
+    db_passwd = argv[2]
+    db_name = argv[3]
 
-    cur = db.cursor()
-    cur.execute(
-            "SELECT * FROM states\
-            WHERE BINARY name='{}'\
-            ORDER BY id ASC;".format(dbInfo[3]))
+    database = MySQLdb.connect(host='localhost',
+                               port=3306,
+                               user=db_user,
+                               passwd=db_passwd,
+                               db=db_name)
 
-    rows = cur.fetchall()
-    for row in rows:
-        print(row)
+    cursor = database.cursor()
 
-    # Close all cursors
-    cur.close()
-    # Close all databases
-    db.close()
+    cursor.execute('SELECT id, name FROM states\
+                   ORDER BY states.id ASC')
+
+    for row in cursor.fetchall():
+        if row[1][0] == 'N':
+            print(row)
