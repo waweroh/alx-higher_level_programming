@@ -22,11 +22,14 @@ if __name__ == "__main__":
             "SELECT cities.id, cities.name, states.name\
             FROM cities\
             JOIN states ON state_id=states.id\
-            ORDER BY cities.id ASC;")
+            WHERE states.name=%s\
+            ORDER BY cities.id ASC;", (dbInfo[3], ))
 
     rows = cur.fetchall()
+    allRows = []
     for row in rows:
-        print(row)
+        allRows.append(row[1])
+    print(*allRows, sep=', ')
 
     # Close all cursors
     cur.close()
