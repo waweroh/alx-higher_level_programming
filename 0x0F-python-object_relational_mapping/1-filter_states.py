@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Script to select all states"""
+"""Script to select all states with a certain name"""
 
 if __name__ == "__main__":
     import MySQLdb
@@ -18,7 +18,10 @@ if __name__ == "__main__":
             )
 
     cur = db.cursor()
-    cur.execute("SELECT * FROM states ORDER BY id ASC;")
+    cur.execute(
+            "SELECT * FROM states\
+            WHERE BINARY name='{}'\
+            ORDER BY id ASC;".format(dbInfo[3]))
 
     rows = cur.fetchall()
     for row in rows:
