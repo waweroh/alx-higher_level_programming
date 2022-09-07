@@ -1,33 +1,29 @@
 #!/usr/bin/node
-
+// Checked Rectangle Class with print(), rotate(), double()
 class Rectangle {
   constructor (w, h) {
-    if (w > 0 && h > 0) {
+    if ((w = parseInt(w)) && w > 0 &&
+        (h = parseInt(h)) && h > 0) {
       this.width = w;
       this.height = h;
     }
   }
 
   print () {
-    if (this.width || this.height) {
-      for (let i = 0; i < this.height; i++) {
-        let string = '';
-        for (let j = 0; j < this.width; j++) {
-          string += 'x';
-        }
-        console.log(string);
-      }
-    }
+    // prints width & height shape with X
+    console.log(('X'.repeat(this.width) + '\n').repeat(this.height).split('')
+      .slice(0, -1).join(''));
   }
 
   rotate () {
-    const newWidth = this.height;
-    const newHeight = this.width;
-    this.width = newWidth;
-    this.height = newHeight;
+    // switches width and height
+    this.width += this.height;
+    this.height = this.width - this.height;
+    this.width -= this.height;
   }
 
   double () {
+    // doubles width and height
     this.width *= 2;
     this.height *= 2;
   }
