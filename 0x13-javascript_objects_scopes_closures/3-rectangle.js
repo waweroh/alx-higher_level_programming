@@ -10,15 +10,12 @@ class Rectangle {
 
   print () {
     if (this.height || this.width) {
-      let string = 'X'.repeat(this.width);
-        for (let j = 0; j < this.height; j++) {
-          console.log(string)
-          
-        }
-        
+      const string = 'X'.repeat(this.width);
+      for (let j = 0; j < this.height; j++) {
+        console.log(string);
       }
     }
   }
-
+}
 
 module.exports = Rectangle;
